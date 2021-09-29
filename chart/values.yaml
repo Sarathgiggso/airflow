@@ -363,7 +363,7 @@ kerberos:
 # Airflow Worker Config
 workers:
   # Number of airflow celery workers in StatefulSet
-  replicas: 1
+  replicas: 2
 
   # Command to use when running Airflow workers (templated).
   command: ~
@@ -1021,13 +1021,13 @@ pgbouncer:
   # See: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
   # Example:
   #
-  # resource:
-  #   limits:
-  #     cpu: 100m
-  #     memory: 128Mi
-  #   requests:
-  #     cpu: 100m
-  #     memory: 128Mi
+  resource:
+     limits:
+      cpu: 100m
+       memory: 128Mi
+     requests:
+       cpu: 100m
+       memory: 128Mi
   resources: {}
 
   service:
@@ -1373,10 +1373,10 @@ dags:
 
 logs:
   persistence:
-    # Enable persistent volume for storing logs
-    enabled: false
-    # Volume size for logs
-    size: 100Gi
+     Enable persistent volume for storing logs
+    enabled: True
+     Volume size for logs
+    size: 10Gi
     # If using a custom storageClass, pass name here
     storageClassName:
     ## the name of an existing PVC to use
